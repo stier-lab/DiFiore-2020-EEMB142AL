@@ -27,7 +27,7 @@ submit_log <- function(){
   
   # Please edit the link below
   # pre_fill_link <- "https://docs.google.com/forms/d/1ngWrz5A5w5RiNSuqzdotxkzgk0DKU-88FmnTHj20nuI/viewform?entry.1733728592"
-  pre_fill_link <- "https://docs.google.com/forms/d/e/1FAIpQLSeinzsJ-rWPF1-c9G8OxwOlxc1A6gED2lCmeDnlRXWAlMApFg/viewform?usp=pp_url&entry.584092125"
+  pre_fill_link <- "https://docs.google.com/forms/d/e/1FAIpQLSf_aeAY3Eb6xFVhiq31aI5KNddtDmHBXhx7wM9MnbQf3KD_5A/viewform?usp=sf_link"
   # Do not edit the code below
   if(!grepl("=$", pre_fill_link)){
     pre_fill_link <- paste0(pre_fill_link, "=")
