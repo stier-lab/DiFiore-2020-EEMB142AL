@@ -1,0 +1,381 @@
+- Class: meta
+  Course: FES 720 Intro to R
+  Lesson: Workspace and Files
+  Author: David Kane
+  Type: Standard
+  Organization: Williams College
+  Version: 0.1.2
+
+- Class: text
+  Output: "In this lesson, you'll learn how to examine your local workspace in R 
+    and begin to explore the relationship between your workspace and the file 
+    system of your machine."
+
+- Class: text
+  Output: "Because different operating systems have different conventions with 
+  regards to things like file paths, the outputs of these commands may vary 
+  across machines."
+
+- Class: text
+  Output: However it's important to note that R provides a common API (a common
+    set of commands) for interacting with files, that way your code will work
+    across different kinds of computers.
+
+- Class: text
+  Output: Let's jump right in so you can get a feel for how these special 
+    functions work!
+
+- Class: cmd_question
+  Output: Determine which directory your R session is using as its current 
+    working directory using getwd(). 
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr='getwd()')
+  Hint: Type getwd() to determine the current working directory.
+
+- Class: text
+  Output: If you open RStudio by using the GUI to open a file, that will 
+    be the working directory. We will learn how to move about inside the computer and 
+    change the working directory later in this lesson.
+  
+- Class: cmd_question
+  Output: Now, you can list all the objects in your local workspace using ls(). 
+    "Local workspace" refers to what is loaded or created in R's memory that can be accessed 
+    in this session. Closing R wipes this local memory clean.
+  CorrectAnswer: ls()
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: Type ls() to view all the objects in your local workspace.
+  
+- Class: text
+  Output: If you are continuing from the previous lesson (Basic_Building_Blocks) without 
+    closing R or RStudio, you will likely notice that the variables you created are still
+    in R's memory, or local workspace.
+
+- Class: cmd_question
+  Output: Similar to the previous lesson, let's assign 9 to x using x <- 9.
+  CorrectAnswer: x <- 9
+  AnswerTests: omnitest(correctExpr='x <- 9')
+  Hint: Type x <- 9 to assign 9 to x.
+
+- Class: cmd_question
+  Output: Now take another look at the objects that are in your workspace using ls().
+  CorrectAnswer: ls()
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: Type ls() to view all the objects in your workspace.
+  
+- Class: text
+  Output: What has changed? If "x" was already present from the previous class, 
+    you will have over-written it with the new content.
+    
+
+- Class: text    
+  Output: Now, let's begin to explore the contents of your computer...
+
+- Class: text
+  Output: Some R commands are the same as their equivalent commands on Linux or
+   on a Mac. These include ls() and dir(). 
+
+- Class: cmd_question
+  Output: List all the files in your working directory using list.files() or 
+    dir().
+  CorrectAnswer: list.files()
+  AnswerTests: any_of_exprs('list.files()', 'dir()')
+  Hint: Type list.files() or dir() to see all the files in your working directory.
+
+- Class: cmd_question
+  Output: As we go through this lesson, you should be examining the help page 
+    for each new function. Check out the help page for list.files with the
+    command ?list.files. This will either open up inside RStudio, or a new page in your web browser.
+  CorrectAnswer: ?list.files
+  AnswerTests: any_of_exprs('?list.files', '?dir', 'help("list.files")', 'help("dir")')
+  Hint: Type ?list.files to see the help page.
+
+- Class: text
+  Output: One of the most helpful parts of any R help file is the See Also 
+    section. Read that section for list.files. Some of these functions may be 
+    used in later portions of this lesson.
+
+- Class: text
+  Output: Using the args() function on a function name is also a handy way to 
+    see what arguments a function can take. We will discuss functions and arguments
+    more later, but for now arguments are how you tell a function what exactly to do,
+    including what data to work on. Most functions have sensible defaults.
+
+
+- Class: cmd_question
+  Output: Use the args() function to determine the arguments to list.files().
+  CorrectAnswer: args(list.files)
+  AnswerTests: omnitest(correctExpr='args(list.files)')
+  Hint: Type args(list.files) to see the arguments to list.files.
+  
+- Class: text
+  Output: You can see all the arguments and their defaults listed, similar to the 
+    help page for list.files(). Each argument has a default (NULL or FALSE in most cases).
+    The important one for our purposes is the argument 'path = "."'. 
+    Remember that "path" is the address, or directory location, or folder location. In 
+    this case, the "." indicates the current directory.
+    
+- Class: cmd_question
+  Output: You can use ".." to look in the directory one level higher up the hierarchy. 
+    Type list.files("..").
+  CorrectAnswer: list.files("..")
+  AnswerTests: omnitest(correctExpr='list.files("..")')
+  Hint: Type list.files("..") to look in the directory one level higher up.
+  
+- Class: text
+  Output: We can also look in directories lower down the hierarchy, if there are any. 
+    Start typing list.files("./") and press the TAB key. This will bring up the autocomplete
+    options for subdirectories, if there are any. Feel free to experiment. Remember, you can 
+    use play() to leave this lesson temporarily, and return using nxt().
+    
+- Class: text
+  Output: So, these commands are equivalent to opening Windows Explorer or Mac Finder and 
+    opening/closing folders and subfolders.
+    
+- Class: text
+  Output: What about creating and deleting folders and files? These operations are straightforward in 
+    a GUI, as you know.
+  
+- Class: cmd_question
+  Output: Let's get back to work!
+    First, we want to make sure that we can set things back to how they were if it all goes wrong ...
+    Assign the value of the current working directory to a variable 
+    called "old.dir".
+  CorrectAnswer: old.dir <- getwd()
+  AnswerTests: omnitest(correctExpr='old.dir <- getwd()')
+  Hint: Type old.dir <- getwd() to assign the value of the current working 
+    directory to a variable called "old.dir" (for "old directory").
+
+- Class: text
+  Output: We will use old.dir at the end of this lesson to move back to the 
+    place that we started. A lot of query functions like getwd() have the 
+    useful property that they return the answer to the question as a result of 
+    the function.
+
+- Class: cmd_question
+  Output: Use dir.create() to create a directory in the current working 
+    directory called "testdir". Look at the arguments or help page if you
+    are unsure what to do.
+  CorrectAnswer: dir.create("testdir")
+  AnswerTests: omnitest(correctExpr='dir.create("testdir")')
+  Hint: Type dir.create("testdir") to create a directory called "testdir" in the current working 
+    directory.
+
+- Class: text
+  Output: We will do all our work in this new directory and then delete it after
+    we are done. This is the R analog to 
+    "Take only pictures, leave only footprints."
+
+- Class: cmd_question
+  Output: Set your working directory to "testdir" with the setwd() command. Remember that 
+    you could use autocomplete (TAB) to help with this.
+  CorrectAnswer: setwd("testdir")
+  AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")')
+  Hint: Use setwd("testdir") to set your working directory to "testdir".
+
+- Class: text
+  Output: In general, you will want your working directory to be someplace 
+    sensible, perhaps created for the specific project that you are working on. 
+    
+
+- Class: cmd_question
+  Output: Create a file in your working directory called "mytest.R" using the
+    file.create() function.
+  CorrectAnswer: file.create("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.create("mytest.R")')
+  Hint: file.create("mytest.R") will get the job done!
+  
+- Class: text
+  Output: This file has the extension ".R". Every file has an extension, which 
+    tells the computer what kind of file it is and therefore what software
+    applications are best able to open it. You are likely familiar with 
+    ".xls" and ".doc" files and their Mac equivalents.
+    
+- Class: text
+  Output: The ".R" extension tells your computer that this is a file with R code, 
+    and the default will be to open it inside RStudio.
+
+- Class: text
+  Output: You can also tell your computer to do other things based on the file extension
+    such as text highlighting. This will highlight different parts of the code, e.g., 
+    functions, brackets, numbers, etc.
+    
+- Class: text
+  Output: In RStudio, go to Tools > Global Options, then the Appearance tab. Choose 
+    a colour scheme, etc. These options will become more useful when you start writing
+    and saving code.
+
+- Class: cmd_question
+  Output: OK, so "mytest.R" should be the only file in this newly created directory. Let's
+    check this by listing all the files in the current directory.
+  CorrectAnswer: list.files()
+  AnswerTests: any_of_exprs('list.files()', 'dir()')
+  Hint: list.files() shows that the directory only contains mytest.R.
+
+- Class: cmd_question
+  Output: We can also specifically check to see if "mytest.R" exists in the working directory using the
+    file.exists() function.
+  CorrectAnswer: file.exists("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.exists("mytest.R")')
+  Hint: Use file.exists("mytest.R") to check that a file exists.
+
+- Class: text
+  Output: These sorts of functions are excessive for interactive use. But, if 
+    you are running a program that loops through a series of files and does some 
+    processing on each one, you will want to check to see that each exists before 
+    you try to process it.
+
+- Class: cmd_question
+  Output: Access information about the file "mytest.R" by using file.info().
+  CorrectAnswer: file.info("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.info("mytest.R")')
+  Hint: file.info("mytest.R") will do the trick!
+  
+- Class: text
+  Output: This function provides information on the size, various time stamps, and users of
+    the file. These might be important in various programming contexts.
+
+- Class: text
+  Output: You can use the $ operator --- e.g., file.info("mytest.R")$mode --- 
+    to grab specific items.
+    
+- Class: text
+  Output: We will use "$" a lot more as we progress through the semester.
+
+- Class: cmd_question
+  Output: Change the name of the file "mytest.R" to "mytest2.R" by using
+    file.rename().
+  CorrectAnswer: file.rename("mytest.R", "mytest2.R")
+  AnswerTests: any_of_exprs('file.rename("mytest.R", "mytest2.R")', 'file.rename(from = "mytest.R", to = "mytest2.R")')
+  Hint: file.rename("mytest.R", "mytest2.R") is the answer. Googling 
+    using key words from the question, along with the letter R, will often give 
+    you a good hint.
+
+- Class: text
+  Output: "Your operating system will provide simpler tools for these sorts 
+    of tasks, but having the ability to manipulate files programatically 
+    is useful. You might now try to delete mytest.R using 
+    file.remove('mytest.R'), but that won't work since mytest.R no longer 
+    exists. You have already renamed it."
+
+- Class: cmd_question
+  Output: Make a copy of "mytest2.R" called "mytest3.R" using file.copy(). If you check the 
+    help page or arguments, you will see that this function requires two
+    pieces of information. The name of the file you want to copy("from = "), and the name
+    of the new copied file ("to = ").
+  CorrectAnswer: file.copy("mytest2.R", "mytest3.R")
+  AnswerTests: any_of_exprs('file.copy("mytest2.R", "mytest3.R")', 'file.copy(from = "mytest2.R", to = "mytest3.R")')
+  Hint: file.copy("mytest2.R", "mytest3.R") works.
+
+- Class: text
+  Output: You now have two files in the current directory. That may not seem 
+    very interesting. But what if you were working with dozens, or millions, 
+    of individual files? In that case, being able to programatically act on 
+    many files would be absolutely necessary. 
+
+- Class: cmd_question
+  Output: Provide the relative path to the file "mytest3.R" by using file.path().
+  CorrectAnswer: file.path("mytest3.R")
+  AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
+  Hint: file.path("mytest3.R") works.
+
+- Class: text
+  Output: You can use file.path() to construct file and directory paths that are
+    independent of the operating system your R code is running on. 
+    
+- Class: text
+  Output: What the $%^! does that mean? 
+  
+- Class: text
+  Output: Good question!
+  
+- Class: text
+  Output: It means that in this function (file.path) you give R the names of the directories in the
+    order they are found (i.e., the directory hierarchy). R then handles how these names
+    are put together, accounting for the differences between Mac, Windows, Linux, etc.
+  
+- Class: cmd_question
+  Output: Pass 'folder1' and 'folder2' as arguments to file.path() to make a platform-independent pathname.
+  CorrectAnswer: file.path("folder1", "folder2")
+  AnswerTests: omnitest(correctExpr='file.path("folder1", "folder2")')
+  Hint: file.path("folder1", "folder2") works.
+
+
+- Class: text
+  Output: The next task is to create a directory in the current working directory
+    called "testdir2" and a subdirectory called "testdir3", in one command.
+    
+- Class: text
+  Output: "This task involves a new idea, that of nesting functions: i.e., we can use a function as one of the arguments in another function."
+  
+- Class: text
+  Output: This situation of nesting functions is similar to how in the previous lesson we used 
+    the variables "x", "y", and "z" as parts of arithmetic calculations as well as joined them
+    together using c(). Remember?
+
+- Class: cmd_question
+  Output: "First, take a look at the documentation for dir.create by entering 
+    ?dir.create . Notice the 'recursive' argument. In order to create nested
+    directories, 'recursive' must be set to TRUE."
+  CorrectAnswer: ?dir.create
+  AnswerTests: omnitest(correctExpr='?dir.create')
+  Hint: ?dir.create will show you the docs.
+
+- Class: text
+  Output: Notice also that dir.create() takes the argument 'path' (we have already used 
+    it when we made the directory 'testdir/', above). We can use file.path() here for this argument. 
+
+- Class: cmd_question
+  Output: Create a directory in the current working directory called 
+    "testdir2" and a subdirectory for it called "testdir3", all in one command
+    by using dir.create() and file.path().
+  CorrectAnswer: dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
+  AnswerTests: omnitest(correctExpr='dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)')
+  Hint: "dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE) will do 
+    the trick. If you forgot the recursive argument, the command may have 
+    appeared to work, but it didn't create the nested directory."
+
+- Class: cmd_question
+  Output: Go back to your original working directory using setwd(). (Recall that we 
+    created the variable old.dir with the full path for the orginal working 
+    directory at the start of these questions.)
+  CorrectAnswer: setwd(old.dir)
+  AnswerTests: omnitest(correctExpr='setwd(old.dir)')
+  Hint: Use setwd(old.dir).
+
+- Class: text
+  Output: "It is often helpful to save the settings that you had before you 
+    began an analysis and then go back to them at the end."
+
+- Class: text
+  Output: "After you finish this lesson delete the 'testdir' directory that 
+    you just left (and everything in it)"
+
+- Class: cmd_question
+  Output: You can do this using the unlink() function. We also need to run this
+    function recursively, so that it deletes all the files and folders within 
+    testdir/. Type unlink(x = "testdir/", recursive = TRUE).
+  CorrectAnswer: unlink(x = "testdir/", recursive = TRUE)   
+  AnswerTests: any_of_exprs('unlink(x = "testdir/", recursive = TRUE)', 'unlink(x = "testdir", recursive = TRUE)', 
+    'unlink("testdir/", recursive = TRUE)', unlink("testdir", recursive = TRUE))
+  Hint: Use unlink(x = "testdir/", recursive = TRUE)
+  
+
+- Class: text
+  Output: "Take nothing but results. Leave nothing but assumptions. 
+    That sounds like 'Take nothing but pictures. Leave nothing but 
+    footprints.' But it makes no sense! Surely our readers can come up 
+    with a better motto . . ."
+
+- Class: text
+  Output: "In this lesson, you learned how to examine your R workspace and 
+  work with the file system of your machine from within R. Thanks for playing!"
+
+
+- Class: mult_question
+  Output: Please submit the log of this lesson to Google Forms so
+    that Simon may evaluate your progress.
+  AnswerChoices: Sure, no problem
+  CorrectAnswer: Sure, no problem
+  AnswerTests: submit_log()
+  Hint: hint, select "Sure, no problem"!
+  
