@@ -205,7 +205,7 @@
 - Class: cmd_question
   Output: So how would we create a new variable ("weight_kg")? Well all we need to type is fish$weight_kg <- fish$weight * 0.001. What this command is doing is telling R to create a new variable in the data.frame fish that multiples each entry in the weight vector by 0.001. Go head and do it. 
   CorrectAnswer: fish$weight_kg <- fish$weight * 0.001
-  AnswerTests: onmitest(correctExp = 'fish$weight_kg <- fish$weight * 0.001')
+  AnswerTests: omnitest(correctExp = 'fish$weight_kg <- fish$weight * 0.001')
   Hint: fish$weight_kg <- fish$weight * 0.001
   
 - Class: cmd_question
