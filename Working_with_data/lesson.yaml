@@ -197,7 +197,7 @@
 - Class: cmd_question
   Output: The first step is we need to tell R to contrust a new variable. One way of accessing specific variables in a data.frame is by using the "$" operator. For instance, if we wanted to access the "weight" variable we could type, fish$weight. Go head and do it. 
   CorrectAnswer: fish$weight
-  AnswerTests: omnitest(correctExpr='fish$weight'
+  AnswerTests: omnitest(correctExpr='fish$weight')
   
 - Class: text
   Output: What did you get? Well R displayed the variable "weight" in the dataframe fish. By default R truncates the display to the first thousand entries (otherwise your computer would crash if you accidentally tried to display a large data.frame)
