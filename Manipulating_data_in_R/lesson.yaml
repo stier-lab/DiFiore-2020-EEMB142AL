@@ -87,9 +87,9 @@
 
 - Class: cmd_question
   Output: The main advantage to using a tibble over a regular data frame is the printing. Let's see what is meant by this. Type tb to print our tibble to the console.
-  CorrectAnswer: cran
+  CorrectAnswer: tb
   AnswerTests: omnitest(correctExpr='tb')
-  Hint: Type cran to print our tb to the console.
+  Hint: Type tb to print our tb to the console.
 
 - Class: text
   Output: This output is much more informative and compact than what we would get if we printed the original data frame (fish) to the console.
@@ -116,7 +116,7 @@
   Hint: Type select(tb, species, weight, length)
 
 - Class: text
-  Output: The first thing to notice is that we don't have to type tb$species, as we normally would when referring to columns of a data frame. The select() function knows we are referring to columns of the cran dataset.
+  Output: The first thing to notice is that we don't have to type tb$species, as we normally would when referring to columns of a data frame. The select() function knows we are referring to columns of the tb dataset.
 
 - Class: text
   Output: Also, note that the columns are returned to us in the order we specified, even though weight is the rightmost column in the original dataset.
@@ -195,7 +195,7 @@
   Hint: type fish.smb %>% mutate(weight_kg = weight * 0.001)
 
 - Class: cmd_question
-  Output: Mutate() is great to adding additional variables to a data frame. Often as ecologists we are interested in summarizing data in a data frame. For instance we might want to calculate the average weight of predators in the fish dataset. To do this we could use tidyverse's summarize() function. To estimate the mean wieght of all predator species in teh data set type summarize(fish, mean_weight = mean(weight)). 
+  Output: Mutate() is great to adding additional variables to a data frame. Often as ecologists we are interested in summarizing data in a data frame. For instance we might want to calculate the average weight of predators in the fish dataset. To do this we could use tidyverse's summarize() function. To estimate the mean wieght of all predator species in the data set type summarize(fish, mean_weight = mean(weight)). 
   CorrectAnswer: summarize(fish, mean_weight = mean(weight))
   AnswerTests: omnitest(correctExpr='summarize(fish, mean_weight = mean(weight))')
   Hint: summarize(fish, mean_weight = mean(weight)) will give us the mean size and label the result 'mean_weight'.
