@@ -1,8 +1,5 @@
 Basic_Building_Blocks
-Vectors
-Sequences_of_Numbers
-Matrices_and_Data_Frames
-Looking_at_Data
+Working_with_data
 Workspace_and_Files
 Manipulating_Data_with_dplyr
 Grouping_and_Chaining_with_dplyr
