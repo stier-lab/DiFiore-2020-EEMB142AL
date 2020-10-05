@@ -2,7 +2,7 @@
 
 This repository houses teaching materials for EEMB 142AL at UCSB in the EEMB department. Materials were collated and adapted by B. DiFiore, K. Kopecky, and K. Oda.
 
-Swirl courses were adapted and/or exerpted directly from <https://github.com/swirldev/swirl_courses> and from Dr. Simon Queenborough's R Statistics course at the Yale School of Environmental studies (<https://github.com/saq>).
+Swirl lessons were adapted and/or exerpted directly from <https://github.com/swirldev/swirl_courses> and from Dr. Simon Queenborough's R Statistics course at the Yale School of Environmental studies (<https://github.com/saq>).
 
 ## Instructions for students to run course
 Enter the following commands directly into your R console in RStudio.
