@@ -16,7 +16,7 @@
   Output: One really important component of learning R is understanding how R indexes data. R operates on a matrix-basis. This means that R typically encodes data based on ROW and COLUMN positions.
   
 - Class: cmd_question
-  Output: To start simple, build a vector x <- c("a", "b", "c", "d")
+  Output: 'To start simple, build a vector x <- c("a", "b", "c", "d")'
   CorrectAnswer: x <- c("a", "b", "c", "d")
   AnswerTests: omnitest(correctExpr='x <- c("a", "b", "c", "d")')
   
@@ -47,7 +47,7 @@
 - Class: cmd_question
   Output: Inspect the head of the new dataframe df.
   CorrectAnswer: head(df)
-  AnswerTests: omnitest(correctExpr='head(df')
+  AnswerTests: omnitest(correctExpr='head(df)')
 
 - Class: text
   Output: Ok, that wasn't too bad. Now that we have our new data frame, we decide that we want to look at the sizes of only Smallmouth bass (abbreviated SMB in the dataset). How would we do this?
@@ -62,13 +62,13 @@
   Output: Manipuating data using indexing notation and logical operators is very powerful. R recognizes other logical operators than equivalency (i.e. "=="). For instance, r recognizes ">", "<", "<=", ">=" which represent inequalities that are useful for numeric variables. Logical operators can also be strung together to get logical subsets of the data. For instance, the "&" and "|" operators signifies "and" and "or" respectively. 
   
 - Class: cmd_question
-  Output: What if we wanted to subset out small mouth bass data set by only individuals who are greater than 400g? Well, we would need to first filter by species equal to "SMB" AND weigth > 400. Give it a shot
+  Output: What if we wanted to subset out small mouth bass data set by only individuals who are greater than 510g? Well, we would need to first filter by species equal to "SMB" AND weigth > 400. Give it a shot
   CorrectAnswer: df[df$species == "SMB" & df$weight > 510, ]
   AnswerTests: omnitest(correctExpr='df[df$species == "SMB" & df$weight > 510, ]')
   Hint: type df[df$species == "SMB" & df$weight > 510, ]
   
 - Class: text
-  Output: You can see that there are 7 individual small mouth bass, which weighted greater than 510 g in the dataset. This is cool, but like everything in R there is a faster and more efficient way to arrive at this anser.
+  Output: You can see that there are 7 individual small mouth bass, which weighted greater than 510 g in the dataset. This is cool, but like everything in R there is a faster and more efficient way to arrive at this anwser.
   
 - Class: text
   Output: An alternative way of manipuating data in R is through the use of the tidyverse sweet of packages. You can think of tidyverse as a super package that is composed of many differnent individual packages, which all use a consistent syntax and format. Lets introduce tidyverse by completing the same set of operations on our fish data set.
@@ -137,16 +137,16 @@
   Hint: filter(tb, species == "SMB") will give you only those rows for which the species variable is equal to "SMB".
 
 - Class: text
-  Output: Again, note that filter() recognizes 'species' as a column of cran, without you having to explicitly specify tb$species.
+  Output: Again, note that filter() recognizes 'species' as a column of tb, without you having to explicitly specify tb$species.
 
 - Class: text
-  Output: The == operator asks whether the thing on the left is equal to the thing on the right. If yes, then it returns TRUE. If no, then FALSE. In this case, package is an entire vector (column) of values, so species == "SMB" returns a vector of TRUEs and FALSEs. filter() then returns only the rows of cran corresponding to the TRUEs.
+  Output: The == operator asks whether the thing on the left is equal to the thing on the right. If yes, then it returns TRUE. If no, then FALSE. In this case, package is an entire vector (column) of values, so species == "SMB" returns a vector of TRUEs and FALSEs. filter() then returns only the rows of tb corresponding to the TRUEs.
 
 - Class: cmd_question
   Output: You can specify as many conditions as you want, separated by commas. For example filter(tb, species == "SMB", weight > 510) will return all rows of tb corresponding to smallmouth bass greater than 510 g. Try it out.
   CorrectAnswer: filter(tb, species == "SMB", weight > 510)
-  AnswerTests: any_of_exprs('filter(tb, species == "SMB", weight > 510)', 'filter(tb, weight > 510, species == "SMB"')
-  Hint: type filter(tb, species == "SMB", weight > 510)
+  AnswerTests: any_of_exprs('filter(tb, species == "SMB", weight > 510)', 'filter(tb, weight > 510, species == "SMB")')
+  Hint: 'type filter(tb, species == "SMB", weight > 510)'
 
 - Class: cmd_question
   Output: The conditions passed to filter() can make use of any of the standard comparison operators. Pull up the relevant documentation with ?Comparison (that's an uppercase C).
