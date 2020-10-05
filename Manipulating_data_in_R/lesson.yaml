@@ -200,7 +200,7 @@
   AnswerTests: omnitest(correctExpr='summarize(fish, mean_weight = mean(weight))')
   Hint: summarize(fish, mean_weight = mean(weight)) will give us the mean size and label the result 'mean_weight'.
 
-- Class: text
+- Class: cmd_question
   Output: That's not particularly interesting. For instance we could have accomplished the same thing without tidyverse by using the command mean(fish$weight). Give it a shot and confirm that you get the same answer. 
   CorrectAnswer: mean(fish$weight)
   AnswerTests: omnitest(correctExpr='mean(fish$weight)'
