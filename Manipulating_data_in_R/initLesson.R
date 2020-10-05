@@ -1,6 +1,6 @@
 #uninstall_course("DiFiore-2020-EEMB142AL")
 #Course uninstalled successfully!
-  
+
 #install_course_github("stier-lab", "DiFiore-2020-EEMB142AL")
 
 
@@ -18,8 +18,8 @@ swirl_options(swirl_logging = TRUE)
 
 # Path to data
 .datapath <- file.path(.get_course_path(),
-                      'DiFiore-2020-EEMB142AL', 'Working_with_data',
-                      'Biocom_pred_prey_diet.csv')
+                       'DiFiore-2020-EEMB142AL', 'Working_with_data',
+                       'Biocom_pred_prey_diet.csv')
 
 #-----------------------------------------------------
 ## Clean the North Temperate Lakes LTER data 
@@ -40,5 +40,3 @@ fish <- read.csv(.datapath, na.strings ="na") %>%
   ungroup()
 
 fish <- as.data.frame(fish)
-
-

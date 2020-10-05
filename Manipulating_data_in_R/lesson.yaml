@@ -1,0 +1,224 @@
+- Class: EEMB 142AL
+  Course: R Programming
+  Lesson: Manipulated data in R
+  Author: Bart DiFiore; adapted from Nick Carchedi
+  Type: Standard
+  Organization: UCSB EEMB
+  Version: 2.2.0
+
+- Class: text
+  Output: In this lesson, you'll learn how to manipulate data in R. One of the beautiful things about R is that there are many different ways of accomplishing the same task. In this lesson we'll first practice with some basic data manipuations using R. Then we will dive into some very fast and powerful functions that are part of the tidyverse sweet of packages.
+
+- Class: text
+  Output: In this lesson we will again be using the predator diet data set collected by the North Temperate Lakes LTER (https://lter.limnology.wisc.edu/node/54908). The dataset is already loaded in this lesson and is called "fish". 
+  
+- Class: text
+  Output: One really important component of learning R is understanding how R indexes data. R operates on a matrix-basis. This means that R typically encodes data based on ROW and COLUMN positions.
+  
+- Class: cmd_question
+  Output: To start simple, build a vector x <- c("a", "b", "c", "d")
+  CorrectAnswer: x <- c("a", "b", "c", "d")
+  AnswerTests: omnitest(correctExpr='x <- c("a", "b", "c", "d")')
+  
+- Class: cmd_question
+  Output: What is we wanted R to return only the 4th entry in the vector x? Well, vectors only have a single dimension and therefore are indexed simply by their position. For instance the command x[n], would return the nth entry in the vector x. Write a command that returns the 4th entry in x. 
+  CorrectAnswer: x[4]
+  AnswerTests: omnitest(correctExpr='x[4]')
+  Hint: type x[4]
+
+- Class: text
+  Output: You can see that the command x[4] retrieves the fourth entry from the vector. A vector with length n has dimensions [n,0] because R indexes by [row, column].
+  
+- Class: cmd_question
+  Output: So lets try this on our data.frame. To index a specific entry in a data.frame, you need to provide R with the location. In other words you provde the name of the data.frame[ROW, COLUMN]. Lets try it! Write a command that will retrieve the fish weigth (i.e. the 6 column) in the 5th row.
+  CorrectAnswer: fish[5,6]
+  AnswerTests: omnitest(correctExpr='fish[5,6]')
+  Hint: type fish[5,6]
+  
+- Class: text
+  Output: Nice work! Its pretty rare to just want a single entry in a data.frame. Lets do something a bit more complicated. What if we wanted to build a new data.frame that was only a subset of the variables in fish.
+
+- Class: cmd_question
+  Output: Variables in data frames are indexed by either their position or their varible names. Lets make a new data frame that only includes the predator type (i.e. "species") and their length and weight. One way of doing this is to type fish[,c("species", "length", "weight"]. Go head and try and assign the subset to a new object "df".
+  CorrectAnswer: df <- fish[,c("species", "length", "weight")]
+  AnswerTests: omnitest(correctExpr='df <- fish[,c("species", "length", "weight")]')
+  Hint: type df <- fish[,c("species", "length", "weight")]
+
+- Class: cmd_question
+  Output: Inspect the head of the new dataframe df.
+  CorrectAnswer: head(df)
+  AnswerTests: omnitest(correctExpr='head(df')
+
+- Class: text
+  Output: Ok, that wasn't too bad. Now that we have our new data frame, we decide that we want to look at the sizes of only Smallmouth bass (abbreviated SMB in the dataset). How would we do this?
+
+- Class: cmd_question
+  Output: Essentially, we are filtering our new data frame where the variable species is equal to "SMB". To do this in base R, we can use the command df[df$species == "SMB",]. What this command does is says take my data.frame df and return all of the rows where variable "species" is equal to "SMB". Give it a shot...
+  CorrectAnswer: df[df$species == "SMB",]
+  AnswerTests: omnitest(correctExpr='df[df$species == "SMB",]')
+  Hint: type df[df$species == "SMB",]
+  
+- Class: text
+  Output: Manipuating data using indexing notation and logical operators is very powerful. R recognizes other logical operators than equivalency (i.e. "=="). For instance, r recognizes ">", "<", "<=", ">=" which represent inequalities that are useful for numeric variables. Logical operators can also be strung together to get logical subsets of the data. For instance, the "&" and "|" operators signifies "and" and "or" respectively. 
+  
+- Class: cmd_question
+  Output: What if we wanted to subset out small mouth bass data set by only individuals who are greater than 400g? Well, we would need to first filter by species equal to "SMB" AND weigth > 400. Give it a shot
+  CorrectAnswer: df[df$species == "SMB" & df$weight > 510, ]
+  AnswerTests: omnitest(correctExpr='df[df$species == "SMB" & df$weight > 510, ]')
+  Hint: type df[df$species == "SMB" & df$weight > 510, ]
+  
+- Class: text
+  Output: You can see that there are 7 individual small mouth bass, which weighted greater than 510 g in the dataset. This is cool, but like everything in R there is a faster and more efficient way to arrive at this anser.
+  
+- Class: text
+  Output: An alternative way of manipuating data in R is through the use of the tidyverse sweet of packages. You can think of tidyverse as a super package that is composed of many differnent individual packages, which all use a consistent syntax and format. Lets introduce tidyverse by completing the same set of operations on our fish data set.
+  
+- Class: cmd_question
+  Output: The tidyverse package was automatically installed (if necessary) and loaded at the beginning of this lesson. Normally, this is something you would have to do on your own. Just to build the habit, type library(tidyverse) now to load the package again.
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: Use library(tidyverse) to load the dplyr package.
+  
+- Class: cmd_question
+  Output: First, lets convert our data frame into a tibble. Without delveing into the specifics, tidyverse works with data frames in a slightly modifed format called a tibble. Type tb <- as_tibble(fish). 
+  CorrectAnswer: tb <- as_tibble(fish)
+  AnswerTests: omnitest(correctExpr='tb <- as_tibble(fish)')
+  Hint: type tb <- as_tibble(fish)
+
+- Class: cmd_question
+  Output: The main advantage to using a tibble over a regular data frame is the printing. Let's see what is meant by this. Type tb to print our tibble to the console.
+  CorrectAnswer: cran
+  AnswerTests: omnitest(correctExpr='tb')
+  Hint: Type cran to print our tb to the console.
+
+- Class: text
+  Output: This output is much more informative and compact than what we would get if we printed the original data frame (fish) to the console.
+
+- Class: text
+  Output: First, we are shown the class and dimensions of the dataset. Just below that, we get a preview of the data. Instead of attempting to print the entire dataset, tidyverse just shows us the first 10 rows of data and only as many columns as fit neatly in our console. At the bottom, we see the names and classes for any variables that didn't fit on our screen.
+
+- Class: text
+  Output: 'There are 5 functions (or "verbs" in tidyverse parlance") that cover most fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
+
+- Class: cmd_question
+  Output: Use ?select to pull up the documentation for the first of these core functions.
+  CorrectAnswer: ?select
+  AnswerTests: omnitest(correctExpr='?select')
+  Hint: ?select will display the documentation for dplyr's select() function.
+  
+- Class: text
+  Output: Help files for the other functions are accessible in the same way.
+
+- Class: cmd_question
+  Output: As may often be the case, particularly with larger datasets, we are only interested in some of the variables. Use select(tb, species, weight, length) to select only the species and size variables from the dataset.
+  CorrectAnswer: select(tb, species, weight, length)
+  AnswerTests: omnitest(correctExpr='select(tb, species, weight, length)')
+  Hint: Type select(tb, species, weight, length)
+
+- Class: text
+  Output: The first thing to notice is that we don't have to type tb$species, as we normally would when referring to columns of a data frame. The select() function knows we are referring to columns of the cran dataset.
+
+- Class: text
+  Output: Also, note that the columns are returned to us in the order we specified, even though weight is the rightmost column in the original dataset.
+
+- Class: cmd_question
+  Output: Instead of specifying the columns we want to keep, we can also specify the columns we want to throw away. To see how this works, do select(tb, -year) to omit the time column.
+  CorrectAnswer: select(tb, -year)
+  AnswerTests: omnitest(correctExpr='select(tb, -year)')
+  Hint: Use select(tb, -year)) to get rid of the time column.
+
+- Class: text
+  Output: Now that you know how to select a subset of columns using select(), a natural next question is "How do I select a subset of rows?" That's where the filter() function comes in.
+
+- Class: cmd_question
+  Output: Use filter(tb, species == "SMB") to select all rows for which the species variable is equal to "SMB". Be sure to use two equals signs side-by-side!
+  CorrectAnswer: filter(tb, species == "SMB")
+  AnswerTests: omnitest(correctExpr='filter(tb, species == "SMB")')
+  Hint: filter(tb, species == "SMB") will give you only those rows for which the species variable is equal to "SMB".
+
+- Class: text
+  Output: Again, note that filter() recognizes 'species' as a column of cran, without you having to explicitly specify tb$species.
+
+- Class: text
+  Output: The == operator asks whether the thing on the left is equal to the thing on the right. If yes, then it returns TRUE. If no, then FALSE. In this case, package is an entire vector (column) of values, so species == "SMB" returns a vector of TRUEs and FALSEs. filter() then returns only the rows of cran corresponding to the TRUEs.
+
+- Class: cmd_question
+  Output: You can specify as many conditions as you want, separated by commas. For example filter(tb, species == "SMB", weight > 510) will return all rows of tb corresponding to smallmouth bass greater than 510 g. Try it out.
+  CorrectAnswer: filter(tb, species == "SMB", weight > 510)
+  AnswerTests: any_of_exprs('filter(tb, species == "SMB", weight > 510)', 'filter(tb, weight > 510, species == "SMB"')
+  Hint: type filter(tb, species == "SMB", weight > 510)
+
+- Class: cmd_question
+  Output: The conditions passed to filter() can make use of any of the standard comparison operators. Pull up the relevant documentation with ?Comparison (that's an uppercase C).
+  CorrectAnswer: ?Comparison
+  AnswerTests: omnitest(correctExpr='?Comparison')
+  Hint: ?Comparison will pull up the relevant help file.
+
+
+- Class: text
+  Output: We've seen how to select a subset of columns and rows from our dataset using select() and filter(), respectively. Inherent in select() was also the ability to arrange our selected columns in any order we please.
+  
+- Class: text
+  Output: What if we wanted to combile all of our variable selection and data filtering into one step? For example, what if we wanted to select the species, length, and weight variables for small mouth bass greater than 510 g in a single command. Tidyverse provides a means of doing this by using the "%>%" (referred to as "pipe") function. Essentially, this function allows you to do lots of different things to a data set without constantly writing out the dataframe to different object names.
+  
+- Class: cmd_question
+  Output: Lets give it a try. First we need to tell R which dataframe we want to work with, tb, then we need to do something to that dataframe. Type fish %>% as_tibble() %>% select(species, length, weight). 
+  CorrectAnswer: fish %>% as_tibble() %>% select(species, length, weight)
+  AnswerTests: omnitest(correctExpr='fish %>% as_tibble() %>% select(species, length, weight)')
+  Hint: type fish %>% as_tibble() %>% select(species, length, weight)
+
+- Class: cmd_question
+  Output: This takes the fish data frame converts it to a tibble and then selects the three columns of interest. Now we just need to filter to SMB greater than 510 g in weight. Give it a try. Take the previous string of commands, add a pipe, and then use the filter function.
+  CorrectAnswer: fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)
+  AnswerTests: omnitest(correctExpr='fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)')
+  Hint: type fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)
+  
+- Class: text
+  Output: Pretty cool huh? We get the same answer that we got earlier using base R and indexing. There are 7 individual SMB greater than 510 g.
+  
+- Class: cmd_question
+  Output: To illustrate the next major function in tidyverse, let's "save" our progress so far by assigning this string of commands to an object, fish.smb.
+  CorrectAnswer: fish.smb <- fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)
+  AnswerTests: omnitest(correctExpr='fish.smb <- fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)')
+  Hint: type fish.smb <- fish %>% as_tibble() %>% select(species, length, weight) %>% filter(species == "SMB", weight > 510)
+
+- Class: text
+  Output: It's common to create a new variable based on the value of one or more variables already in a dataset. The mutate() function does exactly this.
+
+- Class: text
+  Output: Let's built a new variable that converts weight (g) to weight in kg like we did in a previous lesson.
+
+- Class: cmd_question
+  Output: To do this we can type fish.smb %>% mutate(weight_kg = weight * 0.001). This function tells R to create a new variable weight_kg that is the product of the weight variable and 0.001. Give it a try
+  CorrectAnswer: fish.smb %>% mutate(weight_kg = weight * 0.001)
+  AnswerTests: omnitest(correctExpr='fish.smb %>% mutate(weight_kg = weight * 0.001)')
+  Hint: type fish.smb %>% mutate(weight_kg = weight * 0.001)
+
+- Class: cmd_question
+  Output: Mutate() is great to adding additional variables to a data frame. Often as ecologists we are interested in summarizing data in a data frame. For instance we might want to calculate the average weight of predators in the fish dataset. To do this we could use tidyverse's summarize() function. To estimate the mean wieght of all predator species in teh data set type summarize(fish, mean_weight = mean(weight)). 
+  CorrectAnswer: summarize(fish, mean_weight = mean(weight))
+  AnswerTests: omnitest(correctExpr='summarize(fish, mean_weight = mean(weight))')
+  Hint: summarize(fish, mean_weight = mean(weight)) will give us the mean size and label the result 'mean_weight'.
+
+- Class: text
+  Output: That's not particularly interesting. For instance we could have accomplished the same thing without tidyverse by using the command mean(fish$weight). Give it a shot and confirm that you get the same answer. 
+  CorrectAnswer: mean(fish$weight)
+  AnswerTests: omnitest(correctExpr='mean(fish$weight)'
+  
+- Class: text
+  Output: summarize() is most useful when working with data that has been grouped by the values of a particular variable. For example, what if we wanted to find the average weight of each species of fish in the dataset? One obvious approach would be to subset the data for eac species and then calculate the mean, but thats would be hightly inefficient. The tidyverse function group_by() offers a means of doing these types of calculations.
+
+- Class: cmd_question
+  Output: Let's give it a try. We need to take the raw data set, group the data by species, and then summarize to calculate the group levels means. Type fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))
+  CorrectAnswer: fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))
+  AnswerTests: omnitest(correctExpr='fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))')
+
+- Class: text
+  Output: You can see from the output that tidyverse has grouped the data and then calculated the mean weight of each species. Don't underestimate the power of these functions. They are extremely useful to manipulating, plotting, and exploring your datasets. For example, we can rapidly see that on average smallmouth bass are larger than yellow perch in this dataset.
+  
+- Class: mult_question
+  Output: Please submit the log of this lesson to Google Forms so
+    that we can evaluate your progress.
+  AnswerChoices: Sure, no problem
+  CorrectAnswer: Sure, no problem
+  AnswerTests: submit_log()
