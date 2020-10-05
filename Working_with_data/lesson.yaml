@@ -55,12 +55,12 @@
   Output: OK, vectors of integers are straightforward. Hopefully you understand these now, and can make and examine them. 
     
 - Class: text
-  Output: The ':' function is really only good for making vectors of consecutive integers. What if you wanted a vector of the odd numbers from 3 to 11?
+  Output: The ':' function is really only good for making vectors of consecutive integers. But what if you wanted a vector of the odd numbers from 3 to 11?
   
 - Class: cmd_question
   Output: 'The function seq() will allow you to build custom vectors. Just a reminder, if you have questions about a particular R function, you can access its documentation with a question mark followed by the function name: ?function_name_here. Type ?seq and review the help file.'
   CorrectAnswer: ?seq
-  AnswerTests: omnitest(corectExpr='?seq') 
+  AnswerTests: omnitest(correctExpr='?seq') 
   
 - Class: cmd_question
   Output: Lets practice with the sequence function. Build a vector of the odd numbers from 3 to 11. 

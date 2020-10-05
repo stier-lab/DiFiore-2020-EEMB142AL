@@ -1,3 +1,11 @@
+#uninstall_course("DiFiore-2020-EEMB142AL")
+#Course uninstalled successfully!
+  
+#install_course_github("stier-lab", "DiFiore-2020-EEMB142AL")
+
+
+
+
 swirl_options(swirl_logging = TRUE)
 
 
