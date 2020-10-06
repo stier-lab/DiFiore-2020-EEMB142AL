@@ -38,9 +38,10 @@
   Hint: Hmmmm... type 'x'!
   
 - Class: cmd_question
-  Output: But, what if we had a really, really, really _long_ vector that was much too large to display on the screen? Lets see what happens. Type 1:10^6 and hit enter
+  Output: But, what if we had a really, really, really long vector that was much too large to display on the screen? Lets see what happens. Type 1:10^6 and hit enter
   CorrectAnswer: 1:10^6
   AnswerTests: omnitest(correctExpr='1:10^6')
+  Hint: type 1:10^6
   
 - Class: cmd_question
   Output: What happened? Well R truncated the display in the console rather than displaying all of the integer values from 1 to 1 million. There are more efficient ways of looking at the data. We can easily examine 'x' with the str(), or structure, function. Type str(x).
@@ -61,6 +62,7 @@
   Output: 'The function seq() will allow you to build custom vectors. Just a reminder, if you have questions about a particular R function, you can access its documentation with a question mark followed by the function name: ?function_name_here. Type ?seq and review the help file.'
   CorrectAnswer: ?seq
   AnswerTests: omnitest(correctExpr='?seq')
+  Hint: type ?seq to access the help file
   
 - Class: cmd_question
   Output: Lets practice with the sequence function. Build a vector of the odd numbers from 3 to 11. 
@@ -198,6 +200,7 @@
   Output: The first step is we need to tell R to contrust a new variable. One way of accessing specific variables in a data.frame is by using the "$" operator. For instance, if we wanted to access the "weight" variable we could type, fish$weight. Go head and do it. 
   CorrectAnswer: fish$weight
   AnswerTests: omnitest(correctExpr='fish$weight')
+  Hint: type fish$weight then press enter
   
 - Class: text
   Output: What did you get? Well R displayed the variable "weight" in the dataframe fish. By default R truncates the display to the first thousand entries (otherwise your computer would crash if you accidentally tried to display a large data.frame)
@@ -212,6 +215,7 @@
   Output: So what happened? It might seem like nothing. But type head(fish)
   CorrectAnswer: head(fish)
   AnswerTests: omnitest(correctExpr='head(fish)')
+  Hint: hmmm... type head(fish)
   
 - Class: text
   Output: You can see that R has constructed a new variable "weight_kg" and added it to the data.frame. Nice job!
@@ -225,3 +229,4 @@
   AnswerChoices: Oh, yes please!
   CorrectAnswer: Oh, yes please!
   AnswerTests: submit_log()
+  Hint: there you go

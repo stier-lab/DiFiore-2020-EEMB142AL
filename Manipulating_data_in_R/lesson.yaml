@@ -19,6 +19,7 @@
   Output: 'To start simple, build a vector x <- c("a", "b", "c", "d")'
   CorrectAnswer: x <- c("a", "b", "c", "d")
   AnswerTests: omnitest(correctExpr='x <- c("a", "b", "c", "d")')
+  Hint: type x <- c("a", "b", "c", "d")
   
 - Class: cmd_question
   Output: What is we wanted R to return only the 4th entry in the vector x? Well, vectors only have a single dimension and therefore are indexed simply by their position. For instance the command x[n], would return the nth entry in the vector x. Write a command that returns the 4th entry in x. 
@@ -48,6 +49,7 @@
   Output: Inspect the head of the new dataframe df.
   CorrectAnswer: head(df)
   AnswerTests: omnitest(correctExpr='head(df)')
+  Hint: type head(df)
 
 - Class: text
   Output: Ok, that wasn't too bad. Now that we have our new data frame, we decide that we want to look at the sizes of only Smallmouth bass (abbreviated SMB in the dataset). How would we do this?
@@ -77,7 +79,7 @@
   Output: The tidyverse package was automatically installed (if necessary) and loaded at the beginning of this lesson. Normally, this is something you would have to do on your own. Just to build the habit, type library(tidyverse) now to load the package again.
   CorrectAnswer: library(tidyverse)
   AnswerTests: omnitest(correctExpr='library(tidyverse)')
-  Hint: Use library(tidyverse) to load the dplyr package.
+  Hint: Use library(tidyverse) to load the tidyverse package.
   
 - Class: cmd_question
   Output: First, lets convert our data frame into a tibble. Without delveing into the specifics, tidyverse works with data frames in a slightly modifed format called a tibble. Type tb <- as_tibble(fish). 
@@ -146,7 +148,7 @@
   Output: You can specify as many conditions as you want, separated by commas. For example filter(tb, species == "SMB", weight > 510) will return all rows of tb corresponding to smallmouth bass greater than 510 g. Try it out.
   CorrectAnswer: filter(tb, species == "SMB", weight > 510)
   AnswerTests: any_of_exprs('filter(tb, species == "SMB", weight > 510)', 'filter(tb, weight > 510, species == "SMB")')
-  Hint: 'type filter(tb, species == "SMB", weight > 510)'
+  Hint: type filter(tb, species == "SMB", weight > 510)
 
 - Class: cmd_question
   Output: The conditions passed to filter() can make use of any of the standard comparison operators. Pull up the relevant documentation with ?Comparison (that's an uppercase C).
@@ -203,7 +205,8 @@
 - Class: cmd_question
   Output: That's not particularly interesting. For instance we could have accomplished the same thing without tidyverse by using the command mean(fish$weight). Give it a shot and confirm that you get the same answer. 
   CorrectAnswer: mean(fish$weight)
-  AnswerTests: omnitest(correctExpr='mean(fish$weight)'
+  AnswerTests: omnitest(correctExpr='mean(fish$weight)')
+  Hint: type mean(fish$weight)
   
 - Class: text
   Output: summarize() is most useful when working with data that has been grouped by the values of a particular variable. For example, what if we wanted to find the average weight of each species of fish in the dataset? One obvious approach would be to subset the data for eac species and then calculate the mean, but thats would be hightly inefficient. The tidyverse function group_by() offers a means of doing these types of calculations.
@@ -212,6 +215,7 @@
   Output: Let's give it a try. We need to take the raw data set, group the data by species, and then summarize to calculate the group levels means. Type fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))
   CorrectAnswer: fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))
   AnswerTests: omnitest(correctExpr='fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))')
+  Hint: type fish %>% group_by(species) %>% summarize(mean_weight = mean(weight))
 
 - Class: text
   Output: You can see from the output that tidyverse has grouped the data and then calculated the mean weight of each species. Don't underestimate the power of these functions. They are extremely useful to manipulating, plotting, and exploring your datasets. For example, we can rapidly see that on average smallmouth bass are larger than yellow perch in this dataset.
@@ -222,3 +226,4 @@
   AnswerChoices: Sure, no problem
   CorrectAnswer: Sure, no problem
   AnswerTests: submit_log()
+  Hint: there you go!
