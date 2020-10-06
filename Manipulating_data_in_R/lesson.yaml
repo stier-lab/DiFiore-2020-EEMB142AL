@@ -64,7 +64,7 @@
   Output: Manipuating data using indexing notation and logical operators is very powerful. R recognizes other logical operators than equivalency (i.e. "=="). For instance, r recognizes ">", "<", "<=", ">=" which represent inequalities that are useful for numeric variables. Logical operators can also be strung together to get logical subsets of the data. For instance, the "&" and "|" operators signifies "and" and "or" respectively. 
   
 - Class: cmd_question
-  Output: What if we wanted to subset out small mouth bass data set by only individuals who are greater than 510g? Well, we would need to first filter by species equal to "SMB" AND weigth > 400. Give it a shot
+  Output: What if we wanted to subset out small mouth bass data set by only individuals who are greater than 510g? Well, we would need to first filter by species equal to "SMB" AND weigth > 510. Give it a shot
   CorrectAnswer: df[df$species == "SMB" & df$weight > 510, ]
   AnswerTests: omnitest(correctExpr='df[df$species == "SMB" & df$weight > 510, ]')
   Hint: type df[df$species == "SMB" & df$weight > 510, ]
