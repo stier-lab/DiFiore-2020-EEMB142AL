@@ -77,13 +77,13 @@
   Output: 'Create a character vector that contains the following words: "My", "name", "is". Remember to enclose each word in its own set of double quotes, so that R knows they are character strings. Store the vector in a variable called my_char.'
   CorrectAnswer: my_char <- c("My", "name", "is")
   AnswerTests: omnitest(correctExpr='my_char <- c("My", "name", "is")')
-  Hint: Type my_char <- c("My", "name", "is") to create a new variable called my_char
+  Hint: 'Type my_char <- c("My", "name", "is") to create a new variable called my_char
     that contains a character vector of length 3. Make sure that the commas separating
     the words are OUTSIDE of the double quotes, or else R thinks the commas are part
-    of the words.
+    of the words.'
     
 - Class: text
-  Output: "BEST PRACTICE: Is to use double quotes. Single quotes (a.k.a. the apostrophe) will usually work but there are cases where using them will cause trouble. Double quotes are best for text."
+  Output: 'BEST PRACTICE: Is to use double quotes. Single quotes (a.k.a. the apostrophe) will usually work but there are cases where using them will cause trouble. Double quotes are best for text.'
 
 - Class: cmd_question
   Output: Print the contents of my_char to see what it looks like.
@@ -95,16 +95,10 @@
   Output: It seems that we're missing something.... Ah, yes! Your name!
 
 - Class: cmd_question
-  Output: 'To add (or ''concatenate'') your name to the end of my_char, use the c()
-    function like this: c(my_char, "your_name_here"). Place your name in double quotes
-    where I''ve put "your_name_here". Try it now, storing the result in a new variable
-    called my_name.'
+  Output: 'To add (or ''concatenate'') your name to the end of my_char, use the c() function like this: c(my_char, "your_name_here"). Place your name in double quotes where Ive put "your_name_here". Try it now, storing the result in a new variable called my_name.'
   CorrectAnswer: my_name <- c(my_char, "Swirl")
-  AnswerTests: var_is_a("character", "my_name"); expr_uses_func("c"); expr_creates_var("my_name");
-    val_has_length(4)
-  Hint: Tack your name on to the end of the my_char vector using the c() function.  Be
-    sure to assign the result to a new variable called my_name. If your name was "Swirl",
-    you would type my_name <- c(my_char, "Swirl").
+  AnswerTests: var_is_a("character", "my_name"); expr_uses_func("c"); expr_creates_var("my_name"); val_has_length(4)
+  Hint: Tack your name on to the end of the my_char vector using the c() function.  Be sure to assign the result to a new variable called my_name. If your name was "Swirl", you would type my_name <- c(my_char, "Swirl").
 
 - Class: cmd_question
   Output: Take a look at the contents of my_name.
