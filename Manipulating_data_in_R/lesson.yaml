@@ -16,7 +16,7 @@
   Output: One really important component of learning R is understanding how R indexes data. R operates on a matrix-basis. This means that R typically encodes data based on ROW and COLUMN positions.
   
 - Class: cmd_question
-  Output: 'To start simple, build a vector x <- c("a", "b", "c", "d")'
+  Output: To start simple, build a vector x <- c("a", "b", "c", "d")
   CorrectAnswer: x <- c("a", "b", "c", "d")
   AnswerTests: omnitest(correctExpr='x <- c("a", "b", "c", "d")')
   Hint: type x <- c("a", "b", "c", "d")
@@ -100,7 +100,7 @@
   Output: First, we are shown the class and dimensions of the dataset. Just below that, we get a preview of the data. Instead of attempting to print the entire dataset, tidyverse just shows us the first 10 rows of data and only as many columns as fit neatly in our console. At the bottom, we see the names and classes for any variables that didn't fit on our screen.
 
 - Class: text
-  Output: 'There are 5 functions (or "verbs" in tidyverse parlance") that cover most fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
+  Output: There are 5 functions (or "verbs" in tidyverse parlance") that cover most fundamental data manipulation tasks - select(), filter(), arrange(), mutate(), and summarize().
 
 - Class: cmd_question
   Output: Use ?select to pull up the documentation for the first of these core functions.
