@@ -182,7 +182,7 @@
   Hint: Use str(fish) to look at the structure of your data.
 
 - Class: text
-  Output:The beauty of str() is that it combines many of the features of the other functions you've already seen, all in a concise and readable format. At the very top, it tells us that the class of fish is 'data.frame' and that it has 1232 observations and 10 variables. It then gives us the name and class of each variable, as well as a preview of its contents.
+  Output: The beauty of str() is that it combines many of the features of the other functions you've already seen, all in a concise and readable format. At the very top, it tells us that the class of fish is 'data.frame' and that it has 1232 observations and 10 variables. It then gives us the name and class of each variable, as well as a preview of its contents.
 
 - Class: text
   Output: str() is actually a very general function that you can use on most objects in R. Any time you want to understand the structure of something (a dataset, function, etc.), str() is a good place to start.
